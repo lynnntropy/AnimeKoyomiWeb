@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <meta charset="UTF-8">
+    <title>Anime Koyomi</title>
+
+    <!-- Angular Material CSS -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Anime Koyomi CSS -->
+    <link rel="stylesheet" href="css/animekoyomi.css">
+
+</head>
+<body ng-app="AnimeKoyomi">
+    <div class="container">
+        <div class="row main-area">
+            <div class="col-md-7" id="schedule-panel">
+                <md-content>
+                    <md-tabs>
+                        <md-tab label="HorribleSubs">
+                            <md-content class="md-padding">
+                                <div ng-controller="HorribleSubsController">
+                                    <md-subheader>Monday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 1 }:true">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Tuesday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 2 }:true">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Wednesday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 3 }:true">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Thursday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 4 }:true">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Friday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 5 }:true">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Saturday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 6 }:true">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Sunday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 0 }:true">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+                                </div>
+                            </md-content>
+                        </md-tab>
+
+                        <!--<md-tab label="Senpai.moe">-->
+                            <!--<md-content class="md-padding">-->
+                                <!--<md-subheader>Monday</md-subheader>-->
+                                <!--<div ng-controller="HorribleSubsController as ctrl">-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'monday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Tuesday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'tuesday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Wednesday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'wednesday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Thursday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'thursday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Friday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'friday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Saturday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'saturday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Sunday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'sunday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                <!--</div>-->
+                            <!--</md-content>-->
+                        <!--</md-tab>-->
+
+                        <!--<md-tab label="Crunchyroll">-->
+                            <!--<md-content class="md-padding">-->
+                                <!--<md-subheader>Monday</md-subheader>-->
+                                <!--<div ng-controller="HorribleSubsController">-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'monday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Tuesday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'tuesday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Wednesday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'wednesday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Thursday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'thursday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Friday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'friday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Saturday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'saturday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                    <!--<md-subheader>Sunday</md-subheader>-->
+                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'sunday' }:true">-->
+                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
+                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
+                                    <!--</md-list-item>-->
+
+                                <!--</div>-->
+                            <!--</md-content>-->
+                        <!--</md-tab>-->
+                    </md-tabs>
+                </md-content>
+            </div>
+            <div class="col-md-5" id="config-panel" ng-controller="ConfigPanelController">
+                <div class="title">
+                    Anime Koyomi
+                </div>
+
+                <div class="description">
+                    <p>Anime Koyomi is a web app that lets you easily add anime simulcast times to your Google Calendar.</p>
+                    <p>Simply select the shows you want to follow (you <u>can</u> mix multiple sources), select the
+                    calendar you want the events to be created in, and go.</p>
+                    <p>Timezone detection and conversion is handled automatically, but you can choose a custom timezone
+                        if you think something is off.</p>
+
+                    <md-content>
+                        <md-input-container>
+                            <label>Select a custom timezone (optional)</label>
+                            <md-select ng-model="customTimezone">
+                                <md-option ng-repeat="timezone in allTimezones">
+                                    {{timezone}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-content>
+
+                    <md-content id="google-login-button-content">
+                        <md-button id="google-login-button" class="md-raised md-primary" ng-click="googleLoginClick()"
+                                ng-disabled="googleAuthorized">
+                            {{ googleAuthorized == false ? 'Google Login' : 'Logged in' }}
+                        </md-button>
+                    </md-content>
+
+                    <md-content ng-show="googleAuthorized">
+                        <md-input-container>
+                            <label>Calendar to use</label>
+                            <md-select ng-model="selectedCalendar" ng-disabled="!googleAuthorized">
+                                <md-option ng-repeat="calendar in calendarList">
+                                    {{calendar.summary}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-content>
+
+                    <!--<div>{{selectedCalendar}}</div>-->
+
+                    <div id="calendar-clear-warning" ng-show="googleAuthorized">
+                        <b>Warning:</b> This calendar will be cleared of all events.
+                    </div>
+
+                    <md-content>
+                        <md-button id="create-events-button" class="md-raised md-primary" ng-show="googleAuthorized" ng-click="createEvents()">
+                            Create events!
+                        </md-button>
+                    </md-content>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
+
+    <!-- Angular -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+
+    <!-- Angular Material -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Google Calendar API -->
+    <!--<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>-->
+    <script src="https://apis.google.com/js/client.js"></script>
+
+    <!-- Moment -->
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="js/moment-timezone-with-data-2010-2020.min.js"></script>
+
+    <!-- Date.JS -->
+    <script src="js/date.js"></script>
+
+    <!-- Main JS -->
+    <script src="js/animekoyomi.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+div.container
+{
+    height: 100%;
+}
+
+div.row.main-area
+{
+    height: 100%;
+}
+
+#schedule-panel
+{
+    font-family: 'Roboto', Helvetica, sans-serif;
+
+    background-color: #eee;
+    padding: 0;
+    height: 100%;
+}
+
+#schedule-panel > md-content
+{
+    height: 100%;
+}
+
+#schedule-panel > md-content > md-tabs
+{
+    height: 100%;
+}
+
+#config-panel
+{
+    font-family: 'Roboto', Helvetica, sans-serif;
+
+    background-color: #fff;
+    height: 100%;
+
+    padding-top: 40px;
+}
+
+#config-panel > div.title
+{
+    text-align: center;
+    font-size: 30px;
+
+    margin-bottom: 20px;
+}
+
+#config-panel p
+{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#google-login-button
+{
+    width: 120px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: none;
+}
+
+#config-panel > div.description > md-content#google-login-button-content
+{
+    background-color: transparent;
+    text-align: center;
+
+    margin-top: 30px;
+}
+
+#config-panel md-content
+{
+    background-color: transparent;
+    text-align: center;
+}
+
+#config-panel md-content md-input-container
+{
+    font-size: 1em;
+    width: 270px;
+    text-align: left;
+
+    margin-top: 20px;
+}
+
+#calendar-clear-warning
+{
+    margin-top: -15px;
+
+    width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 0.8em;
+}
+
+#create-events-button
+{
+    margin-top: 20px;
+    width: 120px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: none;
+}
+
+md-input-container.md-input-has-value > label
+{
+    margin-bottom: -4px !important;
+}
