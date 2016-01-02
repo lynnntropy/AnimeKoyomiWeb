@@ -259,7 +259,7 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
         {
             var startTime = scheduleItem.convertedTime;
 
-            var endTime = startTime.add(30, 'minutes');
+            var endTime = startTime.clone().add(30, 'minutes');
 
             var request = gapi.client.calendar.events.insert(
                 {
