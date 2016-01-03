@@ -116,6 +116,54 @@
                                 </div>
                             </md-content>
                         </md-tab>
+
+                        <md-tab label="Crunchyroll">
+                            <md-content class="md-padding">
+                                <div ng-controller="CrunchyrollController">
+                                    <md-subheader>Monday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 1 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Tuesday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 2 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Wednesday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 3 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Thursday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 4 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Friday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 5 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Saturday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 6 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+
+                                    <md-subheader>Sunday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 0 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+                                </div>
+                            </md-content>
+                        </md-tab>
                     </md-tabs>
                 </md-content>
             </div>

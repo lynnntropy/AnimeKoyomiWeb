@@ -28,7 +28,8 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
         $scope.nextWeekday = function(weekdayId)
         {
-            return moment().day(weekdayId + 7);
+            //return moment().day(weekdayId + 7);
+            return moment().day(weekdayId);
         };
 
         $scope.getRemoteItems = function()
@@ -106,13 +107,93 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
         $scope.nextWeekday = function(weekdayId)
         {
-            return moment().day(weekdayId + 7);
+            //return moment().day(weekdayId + 7);
+            return moment().day(weekdayId);
         };
 
         $scope.getRemoteItems = function()
         {
             $http({
                 url: "/schedule/senpai",
+                method: "GET"
+            }).success(function(data, status, headers, config) {
+
+                for (var i = 0; i < data.length; i++)
+                {
+                    var item = data[i];
+
+                    var weekdayId = weekdayNameToMomentId(item.weekday);
+                    var nextWeekday = $scope.nextWeekday(weekdayId);
+
+                    var originalTime = moment.tz(
+                        {
+                            year: nextWeekday.year(),
+                            month: nextWeekday.month(),
+                            day: nextWeekday.date(),
+                            hour: item.time.hour,
+                            minute: item.time.minute
+                        },
+                        $scope.timezone);
+
+                    var localTime = originalTime.tz($rootScope.userTimezone);
+
+                    var localItem =
+                    {
+                        weekday: localTime.day(),
+                        title: item.seriesName,
+                        id: item.seriesId,
+                        time: originalTime,
+                        convertedTime: localTime,
+                        selected: false,
+                        timestamp: originalTime.unix()
+                    };
+
+                    $scope.items.push(localItem);
+                }
+
+            }).error(function(data, status, headers, config) {
+                $scope.status = status;
+            });
+
+            console.log($scope.items);
+        };
+
+        $scope.recalculateTimes = function(timezoneString)
+        {
+            for (var i = 0; i < $scope.items.length; i++)
+            {
+                var localTime = $scope.items[i].time.tz($rootScope.userTimezone);
+                $scope.items[i].convertedTime = localTime;
+                $scope.items[i].weekday = localTime.day();
+            }
+        };
+
+        $scope.getRemoteItems();
+
+        $scope.$watch('userTimezone', function() {
+            $scope.recalculateTimes($rootScope.userTimezone);
+        });
+    }])
+
+    .controller('CrunchyrollController', ['$scope', '$rootScope', '$log', '$http', function($scope, $rootScope, $log, $http)
+    {
+        $log.log("Crunchyroll Controller started.");
+
+        $scope.timezone = "US/Pacific";
+
+        $scope.items = [];
+        $rootScope.crunchyrollItems = $scope.items;
+
+        $scope.nextWeekday = function(weekdayId)
+        {
+            //return moment().day(weekdayId + 7);
+            return moment().day(weekdayId);
+        };
+
+        $scope.getRemoteItems = function()
+        {
+            $http({
+                url: "/schedule/crunchyroll",
                 method: "GET"
             }).success(function(data, status, headers, config) {
 
@@ -334,6 +415,13 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
             var selectedCalendarName = $scope.selectedCalendar.trim();
             var calendarId = "";
 
+            console.log("HorribleSubs array:");
+            console.log($rootScope.horribleSubsItems);
+            console.log("Senpai array:");
+            console.log($rootScope.senpaiItems);
+            console.log("CR array:");
+            console.log($rootScope.crunchyrollItems);
+
             for (var i = 0; i < $scope.calendarList.length; i++)
             {
                 console.log("Checking " + $scope.calendarList[i].summary + " against " + selectedCalendarName);
@@ -353,6 +441,22 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                 if ($rootScope.horribleSubsItems[i].selected)
                 {
                     showsToAdd.push($rootScope.horribleSubsItems[i]);
+                }
+            }
+
+            for (var i = 0; i < $rootScope.senpaiItems.length; i++)
+            {
+                if ($rootScope.senpaiItems[i].selected)
+                {
+                    showsToAdd.push($rootScope.senpaiItems[i]);
+                }
+            }
+
+            for (var i = 0; i < $rootScope.crunchyrollItems.length; i++)
+            {
+                if ($rootScope.crunchyrollItems[i].selected)
+                {
+                    showsToAdd.push($rootScope.crunchyrollItems[i]);
                 }
             }
 
