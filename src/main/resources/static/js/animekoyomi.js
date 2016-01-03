@@ -1,4 +1,3 @@
-//var GOOGLE_CALENDAR_CLIENT_ID = '92861593872-8tqv6hquhnhv9oeadqc19dvh01suq3ob.apps.googleusercontent.com';
 var GOOGLE_CALENDAR_CLIENT_ID = '92861593872-j6vjdjh4cjrpg67u0hgrdpvtl5cm1t7a.apps.googleusercontent.com';
 var GOOGLE_CALENDAR_SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
@@ -28,7 +27,6 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
         $scope.nextWeekday = function(weekdayId)
         {
-            //return moment().day(weekdayId + 7);
             return moment().day(weekdayId);
         };
 
@@ -186,7 +184,6 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
         $scope.nextWeekday = function(weekdayId)
         {
-            //return moment().day(weekdayId + 7);
             return moment().day(weekdayId);
         };
 
