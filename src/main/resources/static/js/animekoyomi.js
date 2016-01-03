@@ -27,7 +27,15 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
         $scope.nextWeekday = function(weekdayId)
         {
-            return moment().day(weekdayId);
+            var day = moment().day(weekdayId);
+
+            // make sure the first day isn't before today
+            if (day.unix() < moment().unix())
+            {
+                day.add(7, 'days');
+            }
+
+            return day;
         };
 
         $scope.getRemoteItems = function()
@@ -118,8 +126,15 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
         $scope.nextWeekday = function(weekdayId)
         {
-            //return moment().day(weekdayId + 7);
-            return moment().day(weekdayId);
+            var day = moment().day(weekdayId);
+
+            // make sure the first day isn't before today
+            if (day.unix() < moment().unix())
+            {
+                day.add(7, 'days');
+            }
+
+            return day;
         };
 
         $scope.getRemoteItems = function()
@@ -211,7 +226,15 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
         $scope.nextWeekday = function(weekdayId)
         {
-            return moment().day(weekdayId);
+            var day = moment().day(weekdayId);
+
+            // make sure the first day isn't before today
+            if (day.unix() < moment().unix())
+            {
+                day.add(7, 'days');
+            }
+
+            return day;
         };
 
         $scope.getRemoteItems = function()
