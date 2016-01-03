@@ -201,7 +201,7 @@
                         <md-input-container>
                             <label>Calendar to use</label>
                             <md-select ng-model="selectedCalendar" ng-disabled="!googleAuthorized">
-                                <md-option ng-repeat="calendar in calendarList">
+                                <md-option ng-repeat="calendar in calendarList | filter:{accessRole: '!reader'}">
                                     {{calendar.summary}}
                                 </md-option>
                             </md-select>
