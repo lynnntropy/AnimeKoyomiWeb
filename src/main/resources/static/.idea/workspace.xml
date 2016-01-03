@@ -27,28 +27,28 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384">
-              <caret line="189" column="45" selection-start-line="189" selection-start-column="45" selection-end-line="189" selection-end-column="45" />
+            <state vertical-scroll-proportion="-12.423077">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="animekoyomi.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="animekoyomi.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/animekoyomi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.5172415">
-              <caret line="465" column="10" selection-start-line="465" selection-start-column="10" selection-end-line="465" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.30972221">
+              <caret line="89" column="81" selection-start-line="89" selection-start-column="81" selection-end-line="89" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="animekoyomi.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="animekoyomi.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/animekoyomi.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36315086">
-              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -72,8 +72,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/css/animekoyomi.css" />
-        <option value="$PROJECT_DIR$/js/animekoyomi.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/animekoyomi.js" />
       </list>
     </option>
   </component>
@@ -113,8 +113,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -149,6 +147,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -327,6 +327,30 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="189" column="45" selection-start-line="189" selection-start-column="45" selection-end-line="189" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/animekoyomi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="465" column="10" selection-start-line="465" selection-start-column="10" selection-end-line="465" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/animekoyomi.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -499,26 +523,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/animekoyomi.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="189" column="45" selection-start-line="189" selection-start-column="45" selection-end-line="189" selection-end-column="45" />
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/animekoyomi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5172415">
-          <caret line="465" column="10" selection-start-line="465" selection-start-column="10" selection-end-line="465" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/animekoyomi.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36315086">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.30972221">
+          <caret line="89" column="81" selection-start-line="89" selection-start-column="81" selection-end-line="89" selection-end-column="81" />
           <folding />
         </state>
       </provider>

@@ -56,6 +56,12 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
                     var localTime = originalTime.tz($rootScope.userTimezone);
 
+                    var localTimeToday = moment.tz({
+                        hour: localTime.hour(),
+                        minute: localTime.minute()
+                    }, $rootScope.userTimezone);
+
+
                     var localItem =
                     {
                         weekday: localTime.day(),
@@ -64,7 +70,7 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                         time: originalTime,
                         convertedTime: localTime,
                         selected: false,
-                        timestamp: originalTime.unix()
+                        timestamp: localTimeToday.unix()
                     };
 
                     $scope.items.push(localItem);
@@ -82,8 +88,15 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
             for (var i = 0; i < $scope.items.length; i++)
             {
                 var localTime = $scope.items[i].time.tz($rootScope.userTimezone);
+
+                var localTimeToday = moment.tz({
+                    hour: localTime.hour(),
+                    minute: localTime.minute()
+                    }, $rootScope.userTimezone);
+
                 $scope.items[i].convertedTime = localTime;
                 $scope.items[i].weekday = localTime.day();
+                $scope.items[i].timestamp = localTimeToday.unix();
             }
         };
 
@@ -135,6 +148,12 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
                     var localTime = originalTime.tz($rootScope.userTimezone);
 
+                    var localTimeToday = moment.tz({
+                        hour: localTime.hour(),
+                        minute: localTime.minute()
+                    }, $rootScope.userTimezone);
+
+
                     var localItem =
                     {
                         weekday: localTime.day(),
@@ -143,7 +162,7 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                         time: originalTime,
                         convertedTime: localTime,
                         selected: false,
-                        timestamp: originalTime.unix()
+                        timestamp: localTimeToday.unix()
                     };
 
                     $scope.items.push(localItem);
@@ -161,8 +180,16 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
             for (var i = 0; i < $scope.items.length; i++)
             {
                 var localTime = $scope.items[i].time.tz($rootScope.userTimezone);
+
+                var localTimeToday = moment.tz({
+                    hour: localTime.hour(),
+                    minute: localTime.minute()
+                }, $rootScope.userTimezone);
+
+
                 $scope.items[i].convertedTime = localTime;
                 $scope.items[i].weekday = localTime.day();
+                $scope.items[i].timestamp = localTimeToday.unix();
             }
         };
 
@@ -213,6 +240,11 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
 
                     var localTime = originalTime.tz($rootScope.userTimezone);
 
+                    var localTimeToday = moment.tz({
+                        hour: localTime.hour(),
+                        minute: localTime.minute()
+                    }, $rootScope.userTimezone);
+
                     var localItem =
                     {
                         weekday: localTime.day(),
@@ -221,7 +253,7 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                         time: originalTime,
                         convertedTime: localTime,
                         selected: false,
-                        timestamp: originalTime.unix()
+                        timestamp: localTimeToday.unix()
                     };
 
                     $scope.items.push(localItem);
@@ -239,8 +271,15 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
             for (var i = 0; i < $scope.items.length; i++)
             {
                 var localTime = $scope.items[i].time.tz($rootScope.userTimezone);
+
+                var localTimeToday = moment.tz({
+                    hour: localTime.hour(),
+                    minute: localTime.minute()
+                }, $rootScope.userTimezone);
+
                 $scope.items[i].convertedTime = localTime;
                 $scope.items[i].weekday = localTime.day();
+                $scope.items[i].timestamp = localTimeToday.unix();
             }
         };
 
