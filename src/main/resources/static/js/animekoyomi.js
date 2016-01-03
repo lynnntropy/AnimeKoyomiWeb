@@ -313,7 +313,7 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
         });
     }])
 
-    .controller('ConfigPanelController', ['$scope', '$rootScope', '$log', '$timeout', function($scope, $rootScope, $log, $timeout)
+    .controller('ConfigPanelController', ['$scope', '$rootScope', '$log', '$timeout', '$mdDialog', function($scope, $rootScope, $log, $timeout, $mdDialog)
     {
         $scope.googleAuthorized = false;
         $scope.calendarList = [];
@@ -541,6 +541,8 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
             {
                 $scope.addCalendarItem(showsToAdd[i], calendarId);
             }
+
+            $scope.showFinalDialog(true);
         };
 
         $scope.createCalendar = function(calendarName)
@@ -557,6 +559,48 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                     var calendarId = resp.id;
                 }, 0);
             });
+        };
+
+        $scope.showFinalDialog = function(success)
+        {
+            var successDialog = $mdDialog.alert()
+                .title('Events created!')
+                .textContent('Visit Google Calendar to see your new events: <br/><br/>http://calendar.google.com/')
+                .clickOutsideToClose(true);
+                //.ok('Go to Calendar')
+                //.cancel('Go back');
+
+            var failureDialog = $mdDialog.alert()
+                .title('Error')
+                .textContent('Something went wrong.')
+                .clickOutsideToClose(true)
+                .ok('Got it!');
+
+            if (success)
+            {
+                $mdDialog.show({
+                    clickOutsideToClose: true,
+                    template:
+                    '<md-dialog>' +
+                    '  <md-dialog-content>' +
+                    '   <h2 class="md-title ng-binding">Events created successfully!</h2>' +
+                    '   You can visit Google Calendar now to see the new events.' +
+                    '  </md-dialog-content>' +
+                    '  <md-dialog-actions>' +
+                    //'    <md-button ng-click="closeDialog()" class="md-primary">' +
+                    //'      Close' +
+                    //'    </md-button>' +
+                    '    <md-button href="http://calendar.google.com/" class="md-primary">' +
+                    '      Go to Google Calendar' +
+                    '    </md-button>' +
+                    '  </md-dialog-actions>' +
+                    '</md-dialog>'
+                });
+            }
+            else
+            {
+                $mdDialog.show(failureDialog);
+            }
         };
 
         $scope.$watch('selectedCalendar', function ()

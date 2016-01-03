@@ -106,3 +106,13 @@ md-input-container.md-input-has-value > label
 {
     margin-bottom: -4px !important;
 }
+
+md-dialog
+{
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    padding-top: 25px !important;
+
+    font-family: 'Roboto', Helvetica, sans-serif !important;
+    text-transform: none !important;
+}
