@@ -198,19 +198,21 @@
                     </md-content>
 
                     <md-content ng-show="googleAuthorized">
-                        <md-input-container>
-                            <label>Calendar to use</label>
+                        <md-input-container ng-hide="newCalendar">
+                            <label>{{"Calendar to use"}}</label>
                             <md-select ng-model="selectedCalendar" ng-disabled="!googleAuthorized">
                                 <md-option ng-repeat="calendar in calendarList | filter:{accessRole: '!reader'}">
                                     {{calendar.summary}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
+                        <md-input-container ng-show="newCalendar">
+                            <label>New calendar name</label>
+                            <input ng-model="newCalendarTitle">
+                        </md-input-container>
                     </md-content>
 
-                    <!--<div>{{selectedCalendar}}</div>-->
-
-                    <div id="calendar-clear-warning" ng-show="googleAuthorized">
+                    <div id="calendar-clear-warning" ng-show="googleAuthorized && !newCalendar">
                         <b>Warning:</b> This calendar will be cleared of all events.
                     </div>
 

@@ -317,6 +317,7 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
     {
         $scope.googleAuthorized = false;
         $scope.calendarList = [];
+        $scope.newCalendar = false;
 
         $scope.allTimezones = moment.tz.names();
 
@@ -397,6 +398,7 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                 $timeout(function()
                 {
                     var calendars = resp.items;
+                    calendars.unshift({summary: "[New Calendar]"});
 
                     console.log(calendars);
 
@@ -481,13 +483,27 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
             console.log("CR array:");
             console.log($rootScope.crunchyrollItems);
 
-            for (var i = 0; i < $scope.calendarList.length; i++)
+            if (!$scope.newCalendar)
             {
-                console.log("Checking " + $scope.calendarList[i].summary + " against " + selectedCalendarName);
-                if($scope.calendarList[i].summary == selectedCalendarName)
+                for (var i = 0; i < $scope.calendarList.length; i++)
                 {
-                    calendarId = $scope.calendarList[i].id;
-                    break;
+                    console.log("Checking " + $scope.calendarList[i].summary + " against " + selectedCalendarName);
+                    if ($scope.calendarList[i].summary == selectedCalendarName)
+                    {
+                        calendarId = $scope.calendarList[i].id;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                if ($scope.newCalendarTitle.trim() != "")
+                {
+                    calendarId = $scope.createCalendar($scope.newCalendarTitle);
+                }
+                else
+                {
+                    calendarId = $scope.createCalendar("Anime Koyomi");
                 }
             }
 
@@ -526,6 +542,31 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                 $scope.addCalendarItem(showsToAdd[i], calendarId);
             }
         };
+
+        $scope.createCalendar = function(calendarName)
+        {
+            var request = gapi.client.calendar.calendars.insert(
+            {
+                "summary": calendarName,
+                "description": "Calendar created by Anime Koyomi."
+            });
+
+            request.execute(function (resp){
+                $timeout(function()
+                {
+                    var calendarId = resp.id;
+                }, 0);
+            });
+        };
+
+        $scope.$watch('selectedCalendar', function ()
+        {
+            var selectedCalendarName = $scope.selectedCalendar.trim();
+            if (selectedCalendarName == '[New Calendar]')
+            {
+                $scope.newCalendar = true;
+            }
+        });
 
     }])
 
