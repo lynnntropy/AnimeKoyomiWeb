@@ -25,43 +25,43 @@
                             <md-content class="md-padding">
                                 <div ng-controller="HorribleSubsController">
                                     <md-subheader>Monday</md-subheader>
-                                    <md-list-item ng-repeat="item in items | filter: { weekday: 1 }:true">
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 1 }:true | orderBy:'timestamp'">
                                         <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
                                         <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
                                     </md-list-item>
 
                                     <md-subheader>Tuesday</md-subheader>
-                                    <md-list-item ng-repeat="item in items | filter: { weekday: 2 }:true">
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 2 }:true | orderBy:'timestamp'">
                                         <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
                                         <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
                                     </md-list-item>
 
                                     <md-subheader>Wednesday</md-subheader>
-                                    <md-list-item ng-repeat="item in items | filter: { weekday: 3 }:true">
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 3 }:true | orderBy:'timestamp'">
                                         <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
                                         <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
                                     </md-list-item>
 
                                     <md-subheader>Thursday</md-subheader>
-                                    <md-list-item ng-repeat="item in items | filter: { weekday: 4 }:true">
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 4 }:true | orderBy:'timestamp'">
                                         <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
                                         <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
                                     </md-list-item>
 
                                     <md-subheader>Friday</md-subheader>
-                                    <md-list-item ng-repeat="item in items | filter: { weekday: 5 }:true">
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 5 }:true | orderBy:'timestamp'">
                                         <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
                                         <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
                                     </md-list-item>
 
                                     <md-subheader>Saturday</md-subheader>
-                                    <md-list-item ng-repeat="item in items | filter: { weekday: 6 }:true">
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 6 }:true | orderBy:'timestamp'">
                                         <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
                                         <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
                                     </md-list-item>
 
                                     <md-subheader>Sunday</md-subheader>
-                                    <md-list-item ng-repeat="item in items | filter: { weekday: 0 }:true">
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 0 }:true | orderBy:'timestamp'">
                                         <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
                                         <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
                                     </md-list-item>
@@ -69,103 +69,53 @@
                             </md-content>
                         </md-tab>
 
-                        <!--<md-tab label="Senpai.moe">-->
-                            <!--<md-content class="md-padding">-->
-                                <!--<md-subheader>Monday</md-subheader>-->
-                                <!--<div ng-controller="HorribleSubsController as ctrl">-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'monday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
-                                    <!--</md-list-item>-->
+                        <md-tab label="Senpai.moe">
+                            <md-content class="md-padding">
+                                <div ng-controller="SenpaiController">
+                                    <md-subheader>Monday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 1 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
 
-                                    <!--<md-subheader>Tuesday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'tuesday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
-                                    <!--</md-list-item>-->
+                                    <md-subheader>Tuesday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 2 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
 
-                                    <!--<md-subheader>Wednesday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'wednesday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
-                                    <!--</md-list-item>-->
+                                    <md-subheader>Wednesday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 3 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
 
-                                    <!--<md-subheader>Thursday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'thursday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
-                                    <!--</md-list-item>-->
+                                    <md-subheader>Thursday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 4 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
 
-                                    <!--<md-subheader>Friday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'friday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
-                                    <!--</md-list-item>-->
+                                    <md-subheader>Friday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 5 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
 
-                                    <!--<md-subheader>Saturday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'saturday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
-                                    <!--</md-list-item>-->
+                                    <md-subheader>Saturday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 6 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
 
-                                    <!--<md-subheader>Sunday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'sunday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>-->
-                                    <!--</md-list-item>-->
-
-                                <!--</div>-->
-                            <!--</md-content>-->
-                        <!--</md-tab>-->
-
-                        <!--<md-tab label="Crunchyroll">-->
-                            <!--<md-content class="md-padding">-->
-                                <!--<md-subheader>Monday</md-subheader>-->
-                                <!--<div ng-controller="HorribleSubsController">-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'monday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
-                                    <!--</md-list-item>-->
-
-                                    <!--<md-subheader>Tuesday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'tuesday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
-                                    <!--</md-list-item>-->
-
-                                    <!--<md-subheader>Wednesday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'wednesday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
-                                    <!--</md-list-item>-->
-
-                                    <!--<md-subheader>Thursday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'thursday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
-                                    <!--</md-list-item>-->
-
-                                    <!--<md-subheader>Friday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'friday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
-                                    <!--</md-list-item>-->
-
-                                    <!--<md-subheader>Saturday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'saturday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
-                                    <!--</md-list-item>-->
-
-                                    <!--<md-subheader>Sunday</md-subheader>-->
-                                    <!--<md-list-item ng-repeat="item in items | filter: { weekday: 'sunday' }:true">-->
-                                        <!--<p><b>{{ item.time.getHours() | twodigits }}:{{ item.time.getMinutes() | twodigits }}</b> - {{ item.title }}</p>-->
-                                        <!--<md-checkbox class="md-secondary"></md-checkbox>-->
-                                    <!--</md-list-item>-->
-
-                                <!--</div>-->
-                            <!--</md-content>-->
-                        <!--</md-tab>-->
+                                    <md-subheader>Sunday</md-subheader>
+                                    <md-list-item ng-repeat="item in items | filter: { weekday: 0 }:true | orderBy:'timestamp'">
+                                        <p><b>{{ item.convertedTime.hours() | twodigits }}:{{ item.convertedTime.minutes() | twodigits }}</b> - {{ item.title }}</p>
+                                        <md-checkbox class="md-secondary" ng-model="item.selected"></md-checkbox>
+                                    </md-list-item>
+                                </div>
+                            </md-content>
+                        </md-tab>
                     </md-tabs>
                 </md-content>
             </div>

@@ -64,7 +64,8 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                         id: item.seriesId,
                         time: originalTime,
                         convertedTime: localTime,
-                        selected: false
+                        selected: false,
+                        timestamp: originalTime.unix()
                     };
 
                     $scope.items.push(localItem);
@@ -74,41 +75,83 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                 $scope.status = status;
             });
 
+            console.log($scope.items);
+        };
 
-            //for (var i = 0; i < 5; i++)
-            //{
-            //    var nextMonday = $scope.nextWeekday(1);
-            //    console.log("Next monday: " + nextMonday.format("YYYY-MM-DD"));
-            //
-            //    var originalTime = moment.tz(
-            //        {
-            //            year: nextMonday.year(),
-            //            month: nextMonday.month(),
-            //            day: nextMonday.date(),
-            //            hour: 12 + i,
-            //            minute: 0
-            //        },
-            //        $scope.timezone);
-            //
-            //    //console.log("Original time: " + originalTime.format());
-            //
-            //    var localTime = originalTime.tz($rootScope.userTimezone);
-            //
-            //    //console.log("Local time: " + localTime.format());
-            //
-            //    var newItem = {
-            //        weekday: localTime.day(),
-            //        title: "Anime Title " + i,
-            //        id: "ABCD1234" + i,
-            //        time: originalTime,
-            //        convertedTime: localTime,
-            //        selected: false
-            //    };
-            //
-            //    //console.log(newItem);
-            //
-            //    $scope.items.push(newItem);
-            //}
+        $scope.recalculateTimes = function(timezoneString)
+        {
+            for (var i = 0; i < $scope.items.length; i++)
+            {
+                var localTime = $scope.items[i].time.tz($rootScope.userTimezone);
+                $scope.items[i].convertedTime = localTime;
+                $scope.items[i].weekday = localTime.day();
+            }
+        };
+
+        $scope.getRemoteItems();
+
+        $scope.$watch('userTimezone', function() {
+            $scope.recalculateTimes($rootScope.userTimezone);
+        });
+    }])
+
+    .controller('SenpaiController', ['$scope', '$rootScope', '$log', '$http', function($scope, $rootScope, $log, $http)
+    {
+        $log.log("Senpai Controller started.");
+
+        $scope.timezone = "Europe/London";
+
+        $scope.items = [];
+        $rootScope.senpaiItems = $scope.items;
+
+        $scope.nextWeekday = function(weekdayId)
+        {
+            return moment().day(weekdayId + 7);
+        };
+
+        $scope.getRemoteItems = function()
+        {
+            $http({
+                url: "/schedule/senpai",
+                method: "GET"
+            }).success(function(data, status, headers, config) {
+
+                for (var i = 0; i < data.length; i++)
+                {
+                    var item = data[i];
+
+                    var weekdayId = weekdayNameToMomentId(item.weekday);
+                    var nextWeekday = $scope.nextWeekday(weekdayId);
+
+                    var originalTime = moment.tz(
+                        {
+                            year: nextWeekday.year(),
+                            month: nextWeekday.month(),
+                            day: nextWeekday.date(),
+                            hour: item.time.hour,
+                            minute: item.time.minute
+                        },
+                        $scope.timezone);
+
+                    var localTime = originalTime.tz($rootScope.userTimezone);
+
+                    var localItem =
+                    {
+                        weekday: localTime.day(),
+                        title: item.seriesName,
+                        id: item.seriesId,
+                        time: originalTime,
+                        convertedTime: localTime,
+                        selected: false,
+                        timestamp: originalTime.unix()
+                    };
+
+                    $scope.items.push(localItem);
+                }
+
+            }).error(function(data, status, headers, config) {
+                $scope.status = status;
+            });
 
             console.log($scope.items);
         };
