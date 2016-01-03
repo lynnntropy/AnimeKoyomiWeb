@@ -542,7 +542,11 @@ angular.module('AnimeKoyomi', ['ngMaterial'])
                 $scope.addCalendarItem(showsToAdd[i], calendarId);
             }
 
-            $scope.showFinalDialog(true);
+            $timeout(function()
+            {
+                $scope.showFinalDialog(true);
+            }, 1000);
+
         };
 
         $scope.createCalendar = function(calendarName)
